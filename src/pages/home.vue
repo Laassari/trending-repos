@@ -1,0 +1,33 @@
+<template>
+  <ul>
+    <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
+  </ul>
+</template>
+
+<script>
+import Repo from '../components/Repo'
+export default {
+  name: 'home',
+  data() {
+    return {
+      repos: [],
+      loading: false,
+    }
+  },
+  methods: {
+    async fetchPopularGihutbReops() {
+      this.loading = true
+      const blob = await fetch('https://api.github.com/search/repositories?q=created:>2017-10-22&sort=stars&order=desc')
+      const response = await blob.json()
+
+      this.loading = false
+      this.repos = response.items
+    },
+  },
+  mounted() {
+    this.fetchPopularGihutbReops()
+  },
+}
+</script>
+
+<style></style>
