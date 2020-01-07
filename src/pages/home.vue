@@ -1,13 +1,16 @@
 <template>
   <ul>
     <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
+    <RepoPlaceholders v-if="loading" />
   </ul>
 </template>
 
 <script>
 import Repo from '../components/Repo'
+import RepoPlaceholders from '../components/RepoPlaceholders'
 export default {
   name: 'home',
+  components: { Repo, RepoPlaceholders },
   data() {
     return {
       repos: [],
