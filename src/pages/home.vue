@@ -1,12 +1,10 @@
 <template>
   <ul>
-    <template v-if="!fetchError">
-      <InfiniteScroll @bottom-reached="bottomReachedHandler">
-        <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
-        <RepoPlaceholders v-if="loading" />
-      </InfiniteScroll>
-    </template>
-    <div v-else class="error">{{ fetchError }}</div>
+    <InfiniteScroll @bottom-reached="bottomReachedHandler">
+      <Repo v-for="repo in repos" :key="repo.id" :repo="repo" />
+      <RepoPlaceholders v-if="loading" />
+    </InfiniteScroll>
+    <div v-if="fetchError" class="error">{{ fetchError }}</div>
   </ul>
 </template>
 
@@ -40,6 +38,7 @@ export default {
 
       if (blob.ok) {
         this.repos = [...this.repos, ...response.items]
+        this.fetchError = null
         this.page++
       } else {
         this.fetchError = 'an error occured. Please try later!'
