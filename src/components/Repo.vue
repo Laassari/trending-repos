@@ -56,6 +56,7 @@ li {
   width: 100px;
   height: 100px;
   margin-right: 1rem;
+  flex-shrink: 0;
 }
 .avatar {
   width: 100%;
