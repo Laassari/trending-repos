@@ -1,24 +1,19 @@
-# frontend-coding-challenge
+# frontend-coding-challenge: Trending repos
+
+This is a web app built with Vue.js that list the most github starred repos in the last month
 
 ## Project setup
-```
-yarn install
-```
 
-### Compiles and hot-reloads for development
 ```
+# Install deps
+yarn install
+
+# run project
 yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
